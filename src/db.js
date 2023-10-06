@@ -5,7 +5,7 @@ const TypesModel = require('./models/Types');
 require('dotenv').config();
 const { DB_PASSWORD, DB_USER, DB_HOST, DATABASE_URL } = process.env;
 
-const sequelize = /* process.env.NODE_ENV === 'production'
+const sequelize = process.env.NODE_ENV === 'production'
    ?
    new Sequelize(DATABASE_URL,
       {
@@ -21,7 +21,7 @@ const sequelize = /* process.env.NODE_ENV === 'production'
             keepAlive: true
          }
       })
-   : */
+   :
    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, { logging: false });
 
 RecipesModel(sequelize);
