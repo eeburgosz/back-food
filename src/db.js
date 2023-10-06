@@ -10,6 +10,7 @@ const sequelize = process.env.NODE_ENV === 'production'
    new Sequelize(DATABASE_URL,
       {
          logging: false,
+         port: 5432
          // dialect: "postgres",
          // native: false,
          // ssl: true,
