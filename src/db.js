@@ -10,16 +10,16 @@ const sequelize = process.env.NODE_ENV === 'production'
    new Sequelize(DATABASE_URL,
       {
          logging: false,
-         dialect: "postgres",
-         native: false,
-         ssl: true,
-         dialectOptions: {
-            ssl: {
-               require: true,
-               rejectUnauthorized: false
-            },
-            keepAlive: true
-         }
+         // dialect: "postgres",
+         // native: false,
+         // ssl: true,
+         // dialectOptions: {
+         //    ssl: {
+         //       require: true,
+         //       rejectUnauthorized: false
+         //    },
+         //    keepAlive: true
+         // }
       })
    :
    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, { logging: false });
