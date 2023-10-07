@@ -77,7 +77,7 @@ const postRecipeController = async (name, img, summary, score, healthScore, step
          name
       }
    });
-   if (exist) throw new Error("Recipe already exists");
+   if (exist.length > 0) throw new Error("Recipe already exists");
    const newRecipe = await Recipes.create({
       name, img, summary, score, healthScore, stepByStep, dishTypes
    });
@@ -88,6 +88,7 @@ const postRecipeController = async (name, img, summary, score, healthScore, step
    });
 
    await newRecipe.setTypes(foundTypes);
+   return newRecipe;
 };
 
 module.exports = {
