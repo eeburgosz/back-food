@@ -54,8 +54,16 @@ const getRecipeByNameController = async (name) => await Recipes.findAll({
       name: {
          [Op.iLike]: `%${name}%`
       }
-   }
+   }, include: [
+      {
+         model: Types,
+         attributes: {
+            exclude: ['RecipesTypes']
+         }
+      }
+   ]
 });
+;
 
 const getRecipeByIdController = async (id) => await Recipes.findByPk(id, {
    include: [{
