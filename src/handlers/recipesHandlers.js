@@ -15,6 +15,7 @@ const getRecipesHandler = async (req, res) => {
 
 const getRecipeByIdHandler = async (req, res) => {
    const { id } = req.params;
+   if (typeof id !== "number") return "ID type invalid";
    try {
       const result = await getRecipeByIdController(id);
       result ?
