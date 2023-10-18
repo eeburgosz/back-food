@@ -15,7 +15,7 @@ const getRecipesHandler = async (req, res) => {
 
 const getRecipeByIdHandler = async (req, res) => {
    const { id } = req.params;
-   if (isNaN(id)) return "ID type invalid";
+   if (isNaN(Number(id))) return "ID type invalid";
    try {
       const result = await getRecipeByIdController(id);
       result ?
