@@ -3,14 +3,7 @@ const RecipesModel = require("./models/Recipes");
 const TypesModel = require("./models/Types");
 
 require("dotenv").config();
-const {
-	DB_PASSWORD,
-	DB_USER,
-	DB_HOST,
-	DATABASE_URL,
-	DATABASE_USER,
-	DATABASE_PASSWORD,
-} = process.env;
+const { DB_PASSWORD, DB_USER, DB_HOST, DATABASE_URL } = process.env;
 
 // const sequelize = process.env.NODE_ENV === 'production'
 //    ?
