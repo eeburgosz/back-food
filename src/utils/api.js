@@ -47,7 +47,7 @@ const infoApiRecipes = async () => {
 		};
 	});
 	const data = await Promise.all(dataPromises);
-	console.log(data[1].stepByStep);
+	// console.log(data.stepByStep);
 	return data;
 };
 

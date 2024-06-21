@@ -11,7 +11,6 @@ const getRecipesHandler = async (req, res) => {
 		const result = name
 			? await getRecipeByNameController(name)
 			: await getAllRecipesController();
-		console.log(result[0].stepByStep);
 		result.length === 0
 			? res.status(404).json({ message: "Recipes not found" })
 			: res.status(200).json(result);
