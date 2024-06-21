@@ -14,12 +14,26 @@ const infoApiRecipes = async () => {
 	const resp = (await axios.get(URL)).data.results;
 	const dataPromises = resp.map(async (d) => {
 		const stepsURL = `https://api.spoonacular.com/recipes/${d.id}/analyzedInstructions?apiKey=${API_KEY}&addRecipeInformation=true`;
-		const stepsResp = await axios.get(stepsURL);
-		const stepsData =
-			stepsResp.data[0]?.steps.map((step) => ({
-				number: step.number,
-				step: step.step,
-			})) || [];
+
+		// const stepsResp = await axios.get(stepsURL);
+		// const stepsData =
+		// 	stepsResp.data[0]?.steps.map((step) => ({
+		// 		number: step.number,
+		// 		step: step.step,
+		// 	})) || [];
+
+		let stepsData = [];
+		try {
+			const stepsResp = await axios.get(stepsURL);
+			stepsData =
+				stepsResp.data[0]?.steps.map((step) => ({
+					number: step.number,
+					step: step.step,
+				})) || [];
+		} catch (error) {
+			console.error(`Error fetching steps for recipe ID ${d.id}:`, error);
+		}
+
 		return {
 			id: d.id,
 			name: d.title,
@@ -33,6 +47,7 @@ const infoApiRecipes = async () => {
 		};
 	});
 	const data = await Promise.all(dataPromises);
+	console.log(data[1].stepByStep);
 	return data;
 };
 
