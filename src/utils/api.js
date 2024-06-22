@@ -15,13 +15,6 @@ const infoApiRecipes = async () => {
 	const dataPromises = resp.map(async (d) => {
 		const stepsURL = `https://api.spoonacular.com/recipes/${d.id}/analyzedInstructions?apiKey=${API_KEY}&addRecipeInformation=true`;
 
-		// const stepsResp = await axios.get(stepsURL);
-		// const stepsData =
-		// 	stepsResp.data[0]?.steps.map((step) => ({
-		// 		number: step.number,
-		// 		step: step.step,
-		// 	})) || [];
-
 		let stepsData = [];
 		try {
 			const stepsResp = await axios.get(stepsURL);
@@ -47,7 +40,6 @@ const infoApiRecipes = async () => {
 		};
 	});
 	const data = await Promise.all(dataPromises);
-	// console.log(data.stepByStep);
 	return data;
 };
 

@@ -52,7 +52,7 @@ const { Recipes, Types } = sequelize.models;
 const RecipesTypes = sequelize.define(
 	"RecipesTypes",
 	{},
-	{ timestamps: false }
+	{ timestamps: false, schema: "food_schema" }
 );
 Recipes.belongsToMany(Types, { through: RecipesTypes });
 Types.belongsToMany(Recipes, { through: RecipesTypes });
