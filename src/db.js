@@ -37,9 +37,11 @@ const sequelize =
 					},
 					keepAlive: true,
 				},
+				schema: "food_schema",
 		  })
 		: new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, {
 				logging: false,
+				schema: "food_schema",
 		  });
 
 RecipesModel(sequelize);
